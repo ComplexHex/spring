@@ -1,7 +1,9 @@
 package springcourse;
 
-public class ClassicalMusic implements Music {
+import org.springframework.stereotype.Component;
 
+@Component()
+public class ClassicalMusic implements Music {
     private ClassicalMusic() {
     }
 
@@ -21,8 +23,6 @@ public class ClassicalMusic implements Music {
 
     @Override
     public String getSong() {
-
-
         return "Rapsody";
     }
 }
