@@ -2,28 +2,20 @@ package springcourse;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 @Component
 public class ClassicalMusic implements Music {
+    private List<String> songs = new ArrayList();
 
-    private ClassicalMusic() {
+    {
+        Collections.addAll(songs, "Cl1", "Cl2", "Cl3");
     }
-
-    // factory method
-    public static ClassicalMusic getClassicalMusic() {
-        return new ClassicalMusic();
-    }
-
-    public void doMyInit() {
-        System.out.println("initialization");
-    }
-
-    public void doMyDestroy() {
-        System.out.println("destruction");
-    }
-
 
     @Override
-    public String getSong() {
-        return "Rapsody";
+    public List<String> getSongs() {
+        return songs;
     }
 }
