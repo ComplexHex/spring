@@ -13,6 +13,8 @@
 
     <!--    <context:component-scan base-package="ru.complexhex.springcourse"/>-->
 
+    <context:property-placeholder location="classpath:musicPlayer.properties"/>
+
     <bean id="musicBean"
           class="ru.complexhex.springcourse.RockMusic">
 
@@ -20,7 +22,11 @@
 
     <bean id="musicPlayer"
           class="ru.complexhex.springcourse.MusicPlayer">
-        <constructor-arg ref="musicBean"/>
+        <!--        <constructor-arg ref="musicBean"/>-->
+        <property name="music" ref="musicBean"/>
+
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
 
 </beans>
