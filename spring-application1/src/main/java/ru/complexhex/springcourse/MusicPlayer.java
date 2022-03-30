@@ -27,9 +27,9 @@ public class MusicPlayer {
     }
 
     // IoC
-//    public MusicPlayer(Music music) {
-//        this.music = music;
-//    }
+    public MusicPlayer(Music music) {
+        this.music = music;
+    }
 
     public MusicPlayer() {
     }
