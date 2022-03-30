@@ -2,31 +2,41 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xsi:schemaLocation="
-		http://www.springframework.org/schema/beans
-    	http://www.springframework.org/schema/beans/spring-beans.xsd
-    	http://www.springframework.org/schema/context
-    	http://www.springframework.org/schema/context/spring-context.xsd
-    	http://www.springframework.org/schema/mvc
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!--    <context:component-scan base-package="ru.complexhex.springcourse"/>-->
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="musicBean"
+    <bean id="rockBean"
           class="ru.complexhex.springcourse.RockMusic">
+    </bean>
 
+    <bean id="classicalBean"
+          class="ru.complexhex.springcourse.ClassicalMusic">
+    </bean>
+
+    <bean id="popBean"
+          class="ru.complexhex.springcourse.PopMusic">
     </bean>
 
     <bean id="musicPlayer"
           class="ru.complexhex.springcourse.MusicPlayer">
         <!--        <constructor-arg ref="musicBean"/>-->
-        <property name="music" ref="musicBean"/>
+<!--        <property name="music" ref="musicBean"/>-->
 
-        <property name="name" value="${musicPlayer.name}"/>
-        <property name="volume" value="${musicPlayer.volume}"/>
+<!--        <property name="name" value="${musicPlayer.name}"/>-->
+<!--        <property name="volume" value="${musicPlayer.volume}"/>-->
+        <property name="musicList">
+                <list>
+                    <ref bean="rockBean"/>
+                    <ref bean="popBean"/>
+                    <ref bean="classicalBean"/>
+                </list>
+        </property>
     </bean>
 
 </beans>
