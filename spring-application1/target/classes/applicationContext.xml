@@ -11,32 +11,18 @@
 
     <context:property-placeholder location="classpath:musicPlayer.properties"/>
 
-    <bean id="rockBean"
+    <bean id="musicBean"
           class="ru.complexhex.springcourse.RockMusic">
     </bean>
 
-    <bean id="classicalBean"
-          class="ru.complexhex.springcourse.ClassicalMusic">
-    </bean>
-
-    <bean id="popBean"
-          class="ru.complexhex.springcourse.PopMusic">
-    </bean>
 
     <bean id="musicPlayer"
-          class="ru.complexhex.springcourse.MusicPlayer">
-        <!--        <constructor-arg ref="musicBean"/>-->
-<!--        <property name="music" ref="musicBean"/>-->
+          class="ru.complexhex.springcourse.MusicPlayer"
+          scope="prototype">
+        <property name="music" ref="musicBean"/>
 
-<!--        <property name="name" value="${musicPlayer.name}"/>-->
-<!--        <property name="volume" value="${musicPlayer.volume}"/>-->
-        <property name="musicList">
-                <list>
-                    <ref bean="rockBean"/>
-                    <ref bean="popBean"/>
-                    <ref bean="classicalBean"/>
-                </list>
-        </property>
+        <property name="name" value="${musicPlayer.name}"/>
+        <property name="volume" value="${musicPlayer.volume}"/>
     </bean>
 
 </beans>

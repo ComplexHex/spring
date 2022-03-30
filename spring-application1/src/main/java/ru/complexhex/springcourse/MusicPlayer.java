@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MusicPlayer {
-//    private Music music;
-
-    private List<Music> musicList = new ArrayList<>();
-
+    private Music music;
 
 
     private String name;
@@ -37,21 +34,13 @@ public class MusicPlayer {
     public MusicPlayer() {
     }
 
-//    public void setMusic(Music music){
-//        this.music = music;
-//    }
+    public void setMusic(Music music) {
+        this.music = music;
+    }
 
-
-    public void setMusicList(List<Music> musicList) {
-        this.musicList = musicList;
-           }
 
     public void playMusic() {
-        for (Music music: musicList){
-            System.out.println("Playing: " + music.getSong());
-        }
-
-
+        System.out.println("Playing: " + music.getSong());
 
 
     }
