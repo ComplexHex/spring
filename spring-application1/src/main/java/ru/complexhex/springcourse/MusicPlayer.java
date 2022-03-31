@@ -6,22 +6,29 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class MusicPlayer {
-    private Music music1;
-    private Music music2;
+    private ClassicalMusic classicalMusic;
+    private RockMusic rockMusic;
 
     @Autowired
-    public MusicPlayer(@Qualifier("rockMusic") Music music1, @Qualifier("classicalMusic") Music music2) {
-        this.music1 = music1;
-        this.music2 = music2;
+    public MusicPlayer(RockMusic rockMusic, ClassicalMusic classicalMusic) {
+        this.rockMusic = rockMusic;
+        this.classicalMusic = classicalMusic;
     }
 
-    public String playMusic() {
+    public void playMusic(TypeOfMusic typeOfMusic) {
+        Random random = new Random();
 
-        return ("Playing: " + music1.getSong() + music2.getSong());
+        int randomNumber = random.nextInt(3);
 
+        if (typeOfMusic == TypeOfMusic.CLASSICAL) {
+            System.out.println(("Playing: " + classicalMusic.getSong().get(randomNumber)));
+        } else {
+            System.out.println(("Playing: " + rockMusic.getSong().get((randomNumber))));
+        }
 
     }
 }
