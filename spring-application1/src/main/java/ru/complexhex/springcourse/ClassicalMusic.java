@@ -8,8 +8,8 @@ import javax.annotation.PreDestroy;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
-@Scope("singleton")
+
+
 public class ClassicalMusic implements Music {
 
     @PostConstruct
@@ -21,6 +21,7 @@ public class ClassicalMusic implements Music {
     public String getSong() {
         return "Spring";
     }
+
     @PreDestroy
     public void doMyDestroy(){
         System.out.println("Do destruction");
