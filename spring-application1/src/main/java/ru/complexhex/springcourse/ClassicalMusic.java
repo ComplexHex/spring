@@ -12,18 +12,18 @@ import java.util.List;
 
 public class ClassicalMusic implements Music {
 
-    @PostConstruct
-    public void doMyInit(){
-        System.out.println("Do initialization");
-    }
+//    @PostConstruct
+//    public void doMyInit(){
+//        System.out.println("Do initialization");
+//    }
 
     @Override
     public String getSong() {
         return "Spring";
     }
 
-    @PreDestroy
-    public void doMyDestroy(){
-        System.out.println("Do destruction");
-    }
+//    @PreDestroy
+//    public void doMyDestroy(){
+//        System.out.println("Do destruction");
+//    }
 }
