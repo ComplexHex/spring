@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+
+<html>
+
+<head>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+<div id = 'topbar'>
+
+<p> Привет, я - Миха! ты на моем сайте! </p>
+<img id = 'steve' src='STEVE.jpg'/>
+
+</div>
+
+<div id =  'mainsection'>
+<p> Кто я?: </p>
+<p> Что я делаю?: </p>
+<p> Больше всего я люблю: </p>
+
+
+</div>
+
+
+<div id = "loop-section">
+    <button id = 'mainbutton' type='button' onclick = explore()>Поехали!</button>
+
+</div>
+
+
+</body>
+
+
+<script>
+
+    function explore(){
+        var locations = ['замок', 'замок2', 'замок3'];
+        var items = ['алмаз', 'алмаз2', 'алмаз3'];
+
+        var chosenLocation = locations[Math.floor(Math.random()*locations.length)];
+
+        document.getElementById("loop-section").innerHTML = "";
+
+        $('#loop-section').append(<p>пошел" + chosenLocation + "нашел"</p>);
+
+
+    }
+
+
+</script>
+
+</html>
