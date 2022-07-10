@@ -25,57 +25,14 @@ public class App {
         try {
             session.beginTransaction();
 
-//            Person person = session.get(Person.class, 3);
-//            System.out.println(person);
-//            List<Item> items = person.getItems();
-//            System.out.println(items);
-//
-//            Item item = session.get(Item.class, 2);
-//            System.out.println(item);
-//            Person person = item.getOwner();
-//            System.out.println(person);
+            Person person = new Person("Test cascading", 30);
 
-//            Person person = session.get(Person.class, 2);
-//            Item newItem = new Item("Item from Hibernate", person);
-////для создания двустороннего отношения между таблицами в кзше hibernate
-//            person.getItems().add(newItem);
-//            session.save(newItem);
+            person.addItem(new Item("Item 1"));
+            person.addItem(new Item("Item 2"));
+            person.addItem(new Item("Item 3"));
 
-            //добавление человека и товара
-//            Person person = new Person("Basil", 33);
-//            Item item = new Item("Uzi", person);
-//            person.setItems(new ArrayList<Item>(Collections.singletonList(item)));
-//            session.save(person);
-//            session.save(item);
 
-            //удаление у человека всех товаров
-//            Person person = session.get(Person.class, 2);
-//            List<Item> items = person.getItems();
-            //SQL
-//            for (Item i:items){
-//                session.remove(i);
-//            }
-            //для создания двустороннего отношения между таблицами в кзше hibernate
-//            person.getItems().clear();
-
-            //удаление человека
-//            Person person = session.get(Person.class, 1);
-//            session.delete(person);
-            //SQL
-//            session.remove(person);
-            //для создания двустороннего отношения между таблицами в кзше hibernate
-//            person.getItems().forEach(i->i.setOwner(null));
-
-            //замена товара
-            Person person = session.get(Person.class, 3);
-            Item item = session.get(Item.class, 1);
-
-            item.getOwner().getItems().remove(item);
-
-            //SQL
-            item.setOwner(person);
-
-            person.getItems().add(item);
+            session.save(person);
 
 
             session.getTransaction().commit();
