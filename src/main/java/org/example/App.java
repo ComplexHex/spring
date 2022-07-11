@@ -1,10 +1,16 @@
 package org.example;
 
+import org.example.model.Actor;
+import org.example.model.Movie;
 import org.example.model.Passport;
 import org.example.model.Person;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Hello world!
@@ -12,39 +18,31 @@ import org.hibernate.cfg.Configuration;
 public class App {
     public static void main(String[] args) {
         Configuration configuration = new Configuration().
-                addAnnotatedClass(Person.class).addAnnotatedClass(Passport.class);
+                addAnnotatedClass(Actor.class).addAnnotatedClass(Movie.class);
 
         SessionFactory sessionFactory = configuration.buildSessionFactory();
-        Session session = sessionFactory.getCurrentSession();
 
-        try {
+
+        try (sessionFactory) {
+            Session session = sessionFactory.getCurrentSession();
             session.beginTransaction();
 
-//            Person person = new Person("Test person", 32);
-//            Passport passport = new Passport( 1232456);
-//            person.setPassport(passport);
-//            session.save(person);
-
-            Person person = session.get(Person.class,1);
-            System.out.println(person.getPassport().getPassportNumber());
+            Movie movie = session.get(Movie.class, 2);
+            System.out.println(movie.getActors());
 
 
-            Passport passport = session.get(Passport.class,1);
-            System.out.println(passport.getPassportNumber());
-            System.out.println(passport.getPerson());
-
-            Person person1 = session.get(Person.class, 1);
-          person1.getPassport().setPassportNumber(15235);
-
-            session.save(person1);
-
-
-
+//            Movie movie1 = new Movie("New movie1", 1999);
+//            Actor actor1 = new Actor("Nop", 24);
+//            Actor actor2 = new Actor("Diit", 36);
+//            movie1.setActors(new ArrayList<>(List.of(actor1, actor2)));
+//            actor1.setMovies(new ArrayList<>(Collections.singletonList(movie1)));
+//            actor2.setMovies(new ArrayList<>(Collections.singletonList(movie1)));
+//            session.save(movie1);
+//            session.save(actor1);
+//            session.save(actor2);
 
             session.getTransaction().commit();
 
-        } finally {
-            sessionFactory.close();
         }
     }
 }
